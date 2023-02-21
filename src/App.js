@@ -4,15 +4,23 @@ import "./App.css";
 import EpiflixHeader from "./EpiflixHeader";
 import Home from "./Home";
 import MovieCarousel from "./MovieCarousel";
-
-function App() {
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NotFound from "./NotFound";
+import SingleMovie from "./SingleMovie";
+const App = () => {
   return (
     <>
       <EpiflixHeader />
-      <Home />
-      <MovieCarousel />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/a" element={<EpiflixHeader />} />
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound spacings="mt-2 pt-2" />} />
+          <Route path="/SingleMovie/:dinamicId" element={<SingleMovie />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
-}
+};
 
 export default App;
